@@ -1,0 +1,22 @@
+{
+  "name": "morguapo",
+  "version": "1.0.0",
+  "description": "This is Morguapo, the 39cm bot for discord, created by DeLaVega",
+  "main": "index.js",
+  "scripts": {
+    "test": "39cm"
+  },
+  "keywords": [
+    "morguapo",
+    "bot",
+    "discord",
+    "private",
+    "bot"
+  ],
+  "author": "DeLaVega",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0"
+  }
+}
