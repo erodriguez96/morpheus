@@ -15,6 +15,17 @@ module.exports = {
         if (!permissions.has('SPEAK')) return message.channel.send('No tengo permisos para hablar en ese canal, colgao');
         if (!args.length) return message.channel.send('Necesito que me digas qué poner (un video o algo pibe)');
         
+        if(urlCheck(args[0])){
+            const conn = await vc.join();
+            const stream = ytdl(args[0], {filter: 'audioonly'});
+            conn.play(stream, {seek: 0, volume: 1}).on('finish', () => {
+                vc.leave();
+            })
+            await message.reply(`Pues yo soy mas de José Velez, pero allá va`);
+            //sin este return crashea el codigo porque sigue con lo de abajo, reestructurar para solucionarlo.
+            return
+        }
+
         const connection = await vc.join();
         const videoFinder = async(query) => {
             //esto devuelve una lista de videos --> filtrarla o devolver solo el primero.
@@ -35,4 +46,9 @@ module.exports = {
             return message.channel.send('No existe esa vaina primo');
         }
     }
+}
+
+const urlCheck = (str) => {
+    var regex =  /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
+    return (!regex.test(str)) ? false : true;
 }
