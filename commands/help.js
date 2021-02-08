@@ -2,8 +2,8 @@
 
 module.exports = {
     name: 'help',
-    description: 'displays help for morguapo',
-    execute(client, message, args, Discord){
+    description: 'Displays help for morguapo',
+    execute(message, args, cmd, client, Discord){
         const embed = new Discord.MessageEmbed()
         .setColor('#4B0082')
         .setTitle('Bienvenidos, Bienvenidos a Jinámar')
